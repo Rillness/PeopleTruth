@@ -1,0 +1,67 @@
+<% include ../partials/header %>
+<div class="ui container" style="margin-bottom : 6em">
+
+
+<h1>Name : <%= person.firstName %> <%= person.lastName %></h1>
+   <h2>Location: <%= person.city %>,<%= person.state %> </h2>
+   <h4>Career : <%= person.career %></h4>
+   <img src="<%= person.image %>" class="ui medium image">
+
+   <ul>
+<li><i class="linkedin square icon"> </i><a href="/show/<%=person._id%>/social/linkedin">Add Linkedin</a></li>
+<li><i class="facebook icon"> </i><a href="/show/<%=person._id%>/social/facebook">Add facebook</a></li>
+<li><i class="twitter icon"> </i><a href="/show/<%=person._id%>/social/twitter">Add Twitter</a></li>
+<li><i class="instagram icon"> </i><a href="/show/<%=person._id%>/social/instagram">Add Instagram</a></li>
+   </ul>
+
+
+
+
+<!-- COMMENT SECTION BREAK POINT    -->
+
+<div class="ui comments">
+ <h3 class="ui dividing header">Comments</h3>
+
+<!--  Single Comment Below Me -->
+<% person.comments.forEach(function(comment){%>
+ <div class="comment">
+   <div class="content">
+     <a class="author"><%= comment.user %></a>
+     <div class="metadata">
+       <span class="date"><%= comment.date %></span>
+     </div>
+     <div class="text">
+       <%= comment.text %>
+     </div>
+     <div class="actions">
+     </div>
+   </div>
+ </div>
+ <%});%>
+<!--Single Comment Above Me-->
+
+
+ <!-- <form class="ui reply form" >
+<form class="" method="POST" action="/show/<%= person._id %>">
+ <div class="field">
+   <textarea name="comment"></textarea>
+ </div>
+      <input type="text" placeholder="username" name="author">
+</form>
+
+<br><br> -->
+
+<form class="ui reply form" method="POST" action="/show/<%= person._id%>/comments">
+<div class="field">
+  <textarea name="comment" placeholder="Add Comment"></textarea>
+</div>
+     <input type="text" placeholder="Alias" name="author">
+<br><br>
+  <button class="ui blue labeled submit icon button">
+    <i class="icon edit"></i> Post Comment
+  </button>
+</form>
+
+</div>
+</div>
+<% include ../partials/footer %>

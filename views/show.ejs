@@ -1,0 +1,164 @@
+
+ <% include ../partials/header %>
+ <div class="ui container" style="margin-bottom : 6em">
+
+ <h1><%= person.firstName %> <%= person.lastName %></h1>
+    <h2>Location: <%= person.city %>,<%= person.state %> </h2>
+    <h4>Career : <%= person.career %></h4>
+    <img src="<%= person.image %>" class="ui medium image">
+
+    <%if (person.social.linkedin.length === 0){%>
+   <ul><i class="linkedin square icon"> </i><a>Add Linkedin</a>
+     <form action="/show/<%= person._id %>/social/linkedin" method="POST">
+      <input type="text" name="linkedin">
+      <button>Done</button>
+  </form>
+   </ul>
+   <%}else{%>
+     <!-- Below me is the delete icon -->
+     <%person.social.linkedin.forEach(function(insta){%>
+
+       <ul><i class="linkedin icon"> </i>
+         <a> <%= insta.linkedin %></a></li>
+         <form action="/show/<%= person._id%>/social/linkedin/delete?_method=DELETE" method="POST">
+           <button class="mini ui inverted red button">Delete</button>
+         </form>
+          </ul>
+        <%});%>
+
+   <%}%>
+
+
+
+   <%if (person.social.facebook.length === 0){%>
+   <ul><i class="facebook icon"> </i><a>Add facebook</a>
+     <form action="/show/<%= person._id %>/social/facebook" method="POST">
+      <input type="text" name="facebook">
+      <button>Done</button>
+  </form>
+      </ul>
+
+      <%}else{%>
+        <!-- Below me is the delete icon -->
+        <%person.social.facebook.forEach(function(insta){%>
+
+          <ul><i class="facebook icon"> </i><a><%= insta.facebook %></a></li>
+            <form action="/show/<%= person._id%>/social/facebook/delete?_method=DELETE" method="POST">
+              <button class="mini ui inverted red button">Delete</button>
+            </form>
+             </ul>
+           <%});%>
+      <%}%>
+
+
+
+  <%if (person.social.twitter.length === 0){%>
+   <ul><i class="twitter icon"> </i><a>Add Twitter</a>
+     <form action="/show/<%= person._id %>/social/twitter" method="POST">
+      <input type="text" name="twitter">
+      <button>Done</button>
+  </form>
+
+   </ul>
+   <%}else{%>
+     <!-- Below me is the delete icon -->
+     <%person.social.twitter.forEach(function(twit){%>
+
+       <ul><i class="twitter icon"> </i><a href="http://<%= twit.twitter %>"><%= twit.twitter %></a></li>
+         <br>
+         <form action="/show/<%= person._id%>/social/twitter/delete?_method=DELETE" method="POST">
+           <button class="mini ui inverted red button">Delete</button>
+         </form>
+          </ul>
+        <%});%>
+
+
+
+   <%}%>
+
+<!--  -->
+
+<%if (person.social.instagram.length === 0){%>
+
+  <ul><i class="instagram icon"> </i><a href="/show/<%=person._id%>/social/instagram">Add Instagram</a>
+    <form action="/show/<%= person._id %>/social/instagram" method="POST">
+     <input type="text" name="instagram">
+     <button>Done</button>
+ </form>
+   </ul>
+
+<%}else{%>
+  <!-- Below me is the delete icon -->
+  <%person.social.instagram.forEach(function(insta){%>
+
+    <ul><i class="instagram icon"> </i><a href="http://<%= insta.instagram %>"><%= insta.instagram %></a></li>
+      <br>
+      <form action="/show/<%= person._id%>/social/instagram/delete?_method=DELETE" method="POST">
+        <button class="mini ui inverted red button">Delete</button>
+      </form>
+
+       </ul>
+     <%});%>
+
+
+
+<%}%>
+<!--  -->
+
+
+   <!-- <ul><i class="instagram icon"> </i><a href="/show/<%=person._id%>/social/instagram">Add Instagram</a></li>
+     <br>
+     <a href="/show/<%=person._id%>/social/instagram/magic">
+           <button type="button" name="instagramButton">Show Instagram Account(s)</button>
+     </a>
+      </ul> -->
+
+
+
+
+
+<!-- COMMENT SECTION BREAK POINT    -->
+
+ <div class="ui comments">
+  <h3 class="ui dividing header">Comments</h3>
+
+<!--  Single Comment Below Me -->
+<% person.comments.forEach(function(comment){%>
+
+  <div class="comment">
+    <div class="content">
+      <a class="author"><%= comment.user %></a>
+      <div class="metadata">
+        <span class="date"><%= comment.date %></span>
+      </div>
+      <div class="text">
+        <%= comment.text %>
+      </div>
+      <div class="actions">
+      </div>
+    </div>
+  </div>
+  <%})%>
+
+<!--Single Comment Above Me-->
+
+
+  <!-- <form class="ui reply form" >
+<form class="" method="POST" action="/show/<%= person._id %>">
+  <div class="field">
+    <textarea name="comment"></textarea>
+  </div>
+       <input type="text" placeholder="username" name="author">
+</form>
+
+<br><br> -->
+<br><br>
+<a href="/show/<%= person._id %>/comments">
+  <div class="ui blue labeled submit icon button">
+    <i class="icon edit"></i> Add Thoughts
+  </div>
+</a>
+
+</div>
+</div>
+<% include ../partials/footer %>

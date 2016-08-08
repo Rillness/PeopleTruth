@@ -1,0 +1,71 @@
+<% include ../../partials/header %>
+
+ <h1><%= person.firstName %> <%= person.lastName %></h1>
+    <h2>Location: <%= person.city %>,<%= person.state %> </h2>
+    <h4>Career : <%= person.career %></h4>
+    <img src="<%= person.image %>" class="ui medium image">
+
+
+
+ <ul><i class="linkedin square icon"> </i><a href="/show/<%=person._id%>/social/linkedin">Add Linkedin</a>
+   <form action="/show/<%= person._id %>/social/linkedin" method="POST">
+    <input type="text" name="linkedin">
+    <button>Done</button>
+  </form>
+</ul>
+
+ <ul><i class="facebook icon"> </i>
+ <a href="/show/<%=person._id%>/social/facebook">Add facebook</a>
+
+ </ul>
+
+ <ul><i class="twitter icon"> </i>
+ <a href="/show/<%=person._id%>/social/twitter">Add Twitter</a>
+
+ </ul>
+
+  <ul><i class="instagram icon"> </i><a href="/show/<%=person._id%>/social/instagram">Add Instagram</a>
+  </ul>
+
+
+
+
+
+<!-- COMMENT SECTION BREAK POINT    -->
+
+ <div class="ui comments">
+  <h3 class="ui dividing header">Comments</h3>
+
+<!--  Single Comment Below Me -->
+  <div class="comment">
+    <a class="avatar">
+      <img src="/images/avatar/small/matt.jpg">
+    </a>
+    <div class="content">
+      <a class="author">Matt</a>
+      <div class="metadata">
+        <span class="date">Today at 5:42PM</span>
+      </div>
+      <div class="text">
+        How artistic!
+      </div>
+      <div class="actions">
+        <a class="reply">Reply</a>
+      </div>
+    </div>
+  </div>
+<!--Single Comment Above Me-->
+
+
+  <form class="ui reply form">
+    <div class="field">
+      <textarea></textarea>
+    </div>
+         <input type="text" placeholder="username">
+<br><br>
+    <div class="ui blue labeled submit icon button">
+      <i class="icon edit"></i> Add Thoughts
+    </div>
+  </form>
+</div>
+<% include ../../partials/footer %>

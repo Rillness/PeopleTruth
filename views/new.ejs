@@ -1,0 +1,40 @@
+
+ <% include ../partials/header %>
+<div class="ui container">
+    <h1> Create a new person. </h1>
+ <form class="ui form" method="POST" action="/home">
+  <div class="field">
+    <label style="color : red">First Name(required)</label>
+    <input type="text" name="firstName" placeholder="First Name">
+  </div>
+  <div class="field">
+    <label>Last Name</label>
+    <input type="text" name="lastName" placeholder="Last Name">
+  </div>
+  <div class="field">
+    <label>State</label>
+    <input type="text" name="state" placeholder="State">
+  </div>
+  <div class="field">
+    <label>City</label>
+    <input type="text" name="city" placeholder="City">
+  </div>
+  <div class="field">
+    <label>Career</label>
+    <input type="text" name="career" placeholder="Career">
+  </div>
+  <div class="field">
+    <label>Image</label>
+    <input type="text" name="image" placeholder="Image">
+  </div>
+  <div class="field">
+    <div class="ui checkbox">
+      <input type="checkbox">
+      <label>I agree that this is a real person.</label>
+    </div>
+  </div>
+  <button class="ui button" type="submit">Submit</button>
+</form>
+
+</div>
+ <% include ../partials/footer %>

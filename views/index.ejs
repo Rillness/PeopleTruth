@@ -1,0 +1,41 @@
+<% include ../partials/header %>
+<h1 style="text-align : center"> PeopleTruth </h1>
+<p style="text-align : center"> Find the truth about anyone, by anonymous users. </p>
+
+<div class="ui center aligned basic segment">
+<form action="/home/filtered" method="post">
+  <div class="ui left icon action input">
+    <i class="search icon"></i>
+    <input type="text" placeholder="Search up any name..." name='searchName'>
+  <button class="ui blue submit button">Search</button>
+  </div>
+</form>
+
+  <div class="ui horizontal divider">
+    Or
+  </div>
+        <a href="/home/new">
+  <div class="ui teal labeled icon button">
+    Add New Person
+    <i class="add icon"></i>
+  </div>
+        </a>
+</div>
+
+
+
+
+<%people.forEach(function(person){%>
+   <a href="/show/<%= person._id %>">
+       <h2 class="ui header" style="margin-right : 12em">
+  <img src="<%= person.image %>" class="ui circular image">
+  <%= person.firstName %> <%= person.lastName %>
+</h2>
+
+   </a>
+    <p style="margin-left : 5.38em"><%= person.city %>,<%= person.state %></p>
+<%});%>
+
+
+
+<% include ../partials/footer %>
